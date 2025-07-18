@@ -1,0 +1,29 @@
+.navbar{
+    background-color: rgb(185, 184, 184);
+    padding: 12px 16px;
+    margin-top: 10px;
+    border: 1px solid #ffffff;
+    border-radius: 0.2cm;
+}
+
+ul {
+    width: 100%;
+    height: auto;
+    background-color: rgb(190, 171, 204);
+    border-radius: 0.2cm;
+}
+
+hr {
+  height: 2px;
+  background-color: rgb(101, 101, 119); 
+  width: 75%;
+}
+
+li {
+    padding: 5px;
+    text-align: center;
+}
+
+li:hover {
+    background-color: rgb(197, 177, 211);;
+}
