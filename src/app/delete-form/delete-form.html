@@ -1,0 +1,38 @@
+<div class="delete-form">
+  <h2>Eliminar Estudiante</h2>
+  <hr>
+  <form [formGroup]="studentForm" (ngSubmit)="onDelete()">
+    
+    <mat-form-field appearance="fill" class="form-group">
+      <mat-label>DNI</mat-label>
+      <input matInput type="text" id="dni" formControlName="dni" placeholder="Ingrese DNI a eliminar">
+      <div *ngIf="studentForm.get('dni')?.invalid && studentForm.get('dni')?.touched" class="error">
+        DNI es requerido
+      </div>
+    </mat-form-field>
+
+    <ng-template #noStudent>
+        <div class="error">Estudiante no encontrado</div>
+    </ng-template>
+    
+    <mat-form-field appearance="fill" class="form-group">
+      <mat-label>Descripción</mat-label>
+      <input matInput type="text" id="descripcion" formControlName="descripcion" placeholder="Ingrese descripción a eliminar">
+      <div *ngIf="studentForm.get('descripcion')?.invalid && studentForm.get('descripcion')?.touched" class="error">
+        Descripcion es requerido
+      </div>
+    </mat-form-field>
+
+
+    <button 
+      mat-raised-button 
+      color="primary" 
+      type="submit" 
+      [disabled]="studentForm.invalid" 
+      class="delete-btn">
+      Eliminar Estudiante
+    </button>
+
+
+  </form>
+</div>

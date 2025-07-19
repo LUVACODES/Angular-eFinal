@@ -1,4 +1,4 @@
-.add-form {
+.delete-form {
   max-width: 500px;
   margin: 2rem auto;
   padding: 2rem;
@@ -32,6 +32,7 @@
 
     mat-form-field {
       width: 100%;
+      border-radius: 0.5rem;
 
       .mat-mdc-form-field-flex {
         border-radius: 0.5rem;
@@ -64,25 +65,12 @@
     }
   }
 
-  .form-row {
-    display: flex;
-    gap: 1rem;
-
-    .form-group.half {
-      flex: 1;
-    }
-  }
-
-  .submit-btn,
-  .reset-btn {
+  .delete-btn {
     padding: 0.75rem 1.5rem;
     border-radius: 0.5rem;
     font-size: 1rem;
-    cursor: pointer;
     transition: background 0.2s ease, transform 0.1s ease;
-  }
 
-  .submit-btn {
     background-color: rgb(101, 101, 119);
     color: white;
 
@@ -93,16 +81,6 @@
 
     &:hover:not(:disabled) {
       background-color: rgb(190, 171, 204);
-      transform: translateY(-1px);
-    }
-  }
-
-  .reset-btn {
-    background-color: #f5f5f5;
-    color: #555;
-
-    &:hover {
-      background-color: #e1d1ec;
       transform: translateY(-1px);
     }
   }

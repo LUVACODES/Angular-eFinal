@@ -2,10 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Student } from '../../shared/entities';
+import { MatFormField, MatInputModule } from "@angular/material/input";
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-add-form',
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, MatInputModule, MatFormField, MatButtonModule],
   templateUrl: './add-form.html',
   styleUrl: './add-form.scss'
 })
