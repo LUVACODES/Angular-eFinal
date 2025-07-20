@@ -8,26 +8,24 @@ import { CommonModule } from '@angular/common';
 import { StudentsTable } from "./students-table/students-table";
 import { AddForm } from "./add-form/add-form";
 import { DeleteForm } from './delete-form/delete-form';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Toolbar, Navbar, CommonModule, StudentsTable, AddForm, DeleteForm],
+  imports: [RouterOutlet, Toolbar, Navbar, CommonModule, StudentsTable, AddForm, DeleteForm, MatSnackBarModule],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
-export class App implements OnInit{
+export class App implements OnInit {
   students: Student[] = [];
   activeSection = "students";
-  constructor(private http: HttpClient){
-    
-  }
+
+  constructor(private http: HttpClient, private _snackBar: MatSnackBar) {}
+
   ngOnInit(): void {
-    
     this.http.get<Student[]>('mocks/students.json').subscribe(data => {
-
       this.students = data;
-    })
-
+    });
   }
 
   addStudent(student: Student){
@@ -35,8 +33,21 @@ export class App implements OnInit{
   }
 
   deleteStudent(dni: string) {
-    const studentsList = this.students.filter(student => student.dni.toString() !==dni);
-    this.students = [...studentsList];
+    const i = this.students.findIndex(s => s.dni.toString() === dni);
+    if (i >= 0) {
+      this.students.splice(i, 1);
+      this.students = [...this.students];
+      this._snackBar.open('Estudiante eliminado', 'Cerrar', {
+        duration: 3000,
+        horizontalPosition: 'left',
+        verticalPosition: 'bottom'
+      });
+    } else {
+      this._snackBar.open('DNI no encontrado', 'Cerrar', {
+        duration: 3000,
+        horizontalPosition: 'left',
+        verticalPosition: 'bottom'
+      });
+    }
   }
 }
-
