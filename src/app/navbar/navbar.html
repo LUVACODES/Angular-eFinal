@@ -3,11 +3,15 @@
         <h2 appBigTitle>Acciones</h2>
         <hr>
             <ul class="list-unstyled font-monospace shadow">
-                <li (click)="navigate('students')">Ver lista estudiantes</li>
-                <li (click)="navigate('add')">Agregar</li>
-                <li (click)="navigate('delete')">Eliminar</li>
-                <li (click)="navigate('edit')">Modificar</li>
-
+                <li>
+                    <a routerLink="/alumnos">Alumnos</a>
+                </li>
+                <li >
+                    <a routerLink="/cursos">Cursos</a></li>
+                <li>
+                    <a routerLink="/inscripciones">Inscripciones</a>
+                </li>
+                
             </ul>
 
     </div>
