@@ -1,1 +1,7 @@
-<p>alumnos works!</p>
+
+<div *ngIf="alumnos; else loading">
+   <app-students-table [students]="alumnos"></app-students-table>
+</div>
+
+<ng-template #loading>
+    <p>Cargando...</p>
