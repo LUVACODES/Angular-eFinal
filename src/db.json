@@ -1,0 +1,74 @@
+{
+    "courses":
+    [
+        {
+            "title": "Introducción a Angular",
+            "professor": "María Fernández",
+            "duration": 40,
+            "price": 199.99
+        },
+        {
+            "title": "Desarrollo Web con React",
+            "professor": "Carlos Martínez",
+            "duration": 35,
+            "price": 179.99
+        },
+        {
+            "title": "Fundamentos de Vue.js",
+            "professor": "Ana López",
+            "duration": 30,
+            "price": 149.99
+        },
+        {
+            "title": "Backend con Node.js y Express",
+            "professor": "Luis García",
+            "duration": 45,
+            "price": 219.99
+        },
+        {
+            "title": "Bases de Datos con MongoDB",
+            "professor": "Sofía Ramírez",
+            "duration": 25,
+            "price": 129.99
+        }
+    ],
+
+    "students":
+    [
+        {
+            "name": "Lucía",
+            "surname": "Gómez",
+            "age": 20,
+            "dni": 43827654,
+            "average": 8.5
+        },
+        {
+            "name": "Matías",
+            "surname": "Rodríguez",
+            "age": 22,
+            "dni": 42783910,
+            "average": 7.8
+        },
+        {
+            "name": "Sofía",
+            "surname": "Pérez",
+            "age": 19,
+            "dni": 45321876,
+            "average": 9.2
+        },
+        {
+            "name": "Juan",
+            "surname": "Fernández",
+            "age": 21,
+            "dni": 41234567,
+            "average": 6.9
+        },
+        {
+            "name": "Camila",
+            "surname": "López",
+            "age": 23,
+            "dni": 39871234,
+            "average": 8.0
+        }
+    ]
+}
