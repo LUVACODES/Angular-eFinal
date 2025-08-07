@@ -15,5 +15,9 @@ export class AlumnosAPI {
   ){}
   getAlumnos (): Observable<Student[]> {
     return this.http.get<Student[]>(`${this.baseUrl}/${RoutePaths.STUDENTS}`).pipe(delay(1000));
-}
+  }
+  
+  deleteAlumno(student: Student): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${RoutePaths.STUDENTS}/${student.dni}`).pipe(delay(1000));
+  }
 }
