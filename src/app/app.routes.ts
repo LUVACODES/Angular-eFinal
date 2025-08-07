@@ -20,6 +20,10 @@ export const routes: Routes = [
         path: RoutePaths.INSCRIPCIONES,
         loadComponent: () => import('./features/inscripciones/inscripciones').then(m => m.Inscripciones)
     },
+    {
+        path: RoutePaths.VIEW_STUDENTS,
+        loadComponent: () => import('./features/alumnos/view-students/view-students').then (m => m.ViewStudents)
+    },
  
     {
         path: "**", component: NotFoundComponent
