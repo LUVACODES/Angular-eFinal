@@ -1,8 +1,18 @@
-
-<div *ngIf="alumnos; else loading">
-   <app-students-table (deleteEvent)="deleteStudent($event)" [students]="alumnos"></app-students-table>
+<div class="switch-buttons" style="margin-bottom: 1rem;">
+  <button (click)="activeView = 'list'" [disabled]="activeView === 'list'">Ver Estudiantes</button>
+  <button (click)="activeView = 'add'" [disabled]="activeView === 'add'">Añadir Estudiante</button>
 </div>
 
-<ng-template #loading>
-    <p>Cargando...</p>
-</ng-template>
+<ng-container [ngSwitch]="activeView">
+  <div *ngSwitchCase="'list'">
+    <div *ngIf="alumnos; else loading">
+      <app-students-table (deleteEvent)="deleteStudent($event)" [students]="alumnos"></app-students-table>
+    </div>
+    <ng-template #loading>
+      <p>Cargando...</p>
+    </ng-template>
+  </div>
+  <div *ngSwitchCase="'add'">
+  <app-add-form (studentAdded)="addStudent($event)"></app-add-form>
+</div>
+</ng-container>

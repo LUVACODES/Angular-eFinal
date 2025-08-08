@@ -20,4 +20,8 @@ export class AlumnosAPI {
   deleteAlumno(student: Student): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${RoutePaths.STUDENTS}/${student.dni}`).pipe(delay(1000));
   }
+
+  addAlumno(student: Student): Observable<Student> {
+    return this.http.post<Student>(`${this.baseUrl}/${RoutePaths.STUDENTS}`, student).pipe(delay(1000));
+  }
 }
