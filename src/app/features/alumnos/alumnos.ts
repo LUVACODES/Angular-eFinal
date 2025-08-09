@@ -5,16 +5,18 @@ import { CommonModule } from '@angular/common';
 import { StudentsTable } from "../../students-table/students-table";
 import { switchMap } from 'rxjs';
 import { AddForm } from "../../add-form/add-form";
+import { EditForm } from '../../edit-form/edit-form';
 
 @Component({
   selector: 'app-alumnos',
-  imports: [CommonModule, StudentsTable, AddForm],
+  imports: [CommonModule, StudentsTable, AddForm, EditForm],
   templateUrl: './alumnos.html',
   styleUrl: './alumnos.scss'
 })
 export class Alumnos {
-  activeView: 'list' | 'add' = 'list';
+  activeView: 'list' | 'add' | 'edit' = 'list';
   alumnos!: Student[];
+  editStudentData?: Student;
   constructor(private alumnosAPI: AlumnosAPI) {}
 
   ngOnInit() {
@@ -39,5 +41,20 @@ export class Alumnos {
     this.alumnos = alumnos;
     this.activeView = 'list'; 
   });
-}
+  }
+
+  onEditStudent(student: Student) {
+    this.editStudentData = student;
+    this.activeView = 'edit';
+  }
+
+  updateStudent(student: Student) {
+  this.alumnosAPI.updateAlumno(student).pipe(
+    switchMap(() => this.alumnosAPI.getAlumnos())
+  ).subscribe(alumnos => {
+    this.alumnos = alumnos;
+    this.activeView = 'list';
+    this.editStudentData = undefined;
+  });
+  }
 }

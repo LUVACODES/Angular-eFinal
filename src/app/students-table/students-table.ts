@@ -14,6 +14,8 @@ import { RoutePaths } from '../../shared/routes';
 export class StudentsTable {
   @Input() students: Student[] = [];
   @Output() deleteEvent = new EventEmitter<Student>();
+  @Output() editEvent = new EventEmitter<Student>();
+
   displayedColumns: string[] = [
     'fullname',
     'age',
@@ -31,7 +33,9 @@ export class StudentsTable {
   }
 
   deleteStudent(student: Student) {
-    console.log("Eliminando estudiante:", student);
-    this.deleteEvent.emit(student)
+    this.deleteEvent.emit(student);
 }
+  editStudent(student: Student) {
+    this.editEvent.emit(student);
+  }
 }

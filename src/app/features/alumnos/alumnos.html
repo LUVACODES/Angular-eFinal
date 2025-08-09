@@ -4,15 +4,18 @@
 </div>
 
 <ng-container [ngSwitch]="activeView">
-  <div *ngSwitchCase="'list'">
-    <div *ngIf="alumnos; else loading">
-      <app-students-table (deleteEvent)="deleteStudent($event)" [students]="alumnos"></app-students-table>
-    </div>
-    <ng-template #loading>
-      <p>Cargando...</p>
+    <div *ngSwitchCase="'list'">
+        <div *ngIf="alumnos; else loading">
+        <app-students-table (deleteEvent)="deleteStudent($event)" (editEvent)="onEditStudent($event)" [students]="alumnos"></app-students-table>
+        </div>
+        <ng-template #loading>
+          <p>Cargando...</p>
     </ng-template>
-  </div>
-  <div *ngSwitchCase="'add'">
-  <app-add-form (studentAdded)="addStudent($event)"></app-add-form>
-</div>
+    </div>
+    <div *ngSwitchCase="'add'">
+        <app-add-form (studentAdded)="addStudent($event)"></app-add-form>
+    </div>
+    <div *ngSwitchCase="'edit'">
+        <app-edit-form *ngIf="editStudentData" [student]="editStudentData" (studentEdited)="updateStudent($event)"></app-edit-form>
+    </div>
 </ng-container>

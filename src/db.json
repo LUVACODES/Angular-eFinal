@@ -38,19 +38,19 @@
   ],
   "students": [
     {
+      "dni": "43827654",
       "name": "Lucía",
       "surname": "Gómez",
       "age": 20,
-      "id": "443827654",
-      "dni": 43827654,
-      "average": 8.5
+      "average": 8.5,
+      "id": "43827654"
     },
     {
       "name": "Matías",
       "surname": "Rodríguez",
       "age": 22,
       "id": "42783910",
-      "dni": 42783910,
+      "dni": "42783910",
       "average": 7.8
     },
     {
@@ -58,7 +58,7 @@
       "surname": "Pérez",
       "age": 19,
       "id": "45321876",
-      "dni": 45321876,
+      "dni": "45321876",
       "average": 9.2
     },
     {
@@ -66,7 +66,7 @@
       "surname": "Fernández",
       "age": 21,
       "id": "41234567",
-      "dni": 41234567,
+      "dni": "41234567",
       "average": 6.9
     },
     {
@@ -74,8 +74,16 @@
       "surname": "López",
       "age": 23,
       "id": "39871234",
-      "dni": 39871234,
+      "dni": "39871234",
       "average": 8
+    },
+    {
+      "id": "123456789",
+      "dni": "123456789",
+      "name": "Luis",
+      "surname": "Blanco",
+      "age": 9,
+      "average": 7
     }
   ]
 }

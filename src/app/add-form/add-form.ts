@@ -38,7 +38,7 @@ export class AddForm implements OnInit {
     const formValue = this.studentForm.value;
     const newStudent: Student = {
       ...formValue,
-      id: formValue.dni // Set id same as dni
+      id: formValue.dni
     };
     this.studentAdded.emit(newStudent);
     this.showSuccessAdded();

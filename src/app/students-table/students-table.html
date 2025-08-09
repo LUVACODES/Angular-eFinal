@@ -27,7 +27,7 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Acciones</th>
       <td mat-cell *matCellDef="let element" data-label="Acciones">
         <button (click)="viewDetails(element)" mat-button color="accent">Ver</button>
-        <!-- <button (click)="editStudent(element)" mat-button color="primary">Editar</button>-->
+        <button (click)="editStudent(element)" mat-button color="primary">Editar</button>
         <button (click)="deleteStudent(element)" mat-button color="warn">Eliminar</button>
       </td>
     </ng-container>

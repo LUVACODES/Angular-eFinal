@@ -1,1 +1,38 @@
-<p>edit-form works!</p>
+<div class="edit-form">
+  <h2>Editar Estudiante</h2>
+  <hr>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+
+    <mat-form-field appearance="fill" class="form-group">
+      <mat-label>DNI</mat-label>
+      <input matInput type="text" id="dni" formControlName="dni" [disabled]="true">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-group">
+      <mat-label>Nombre</mat-label>
+      <input matInput type="text" id="name" formControlName="name" placeholder="Ingrese nombre">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-group">
+      <mat-label>Apellido</mat-label>
+      <input matInput type="text" id="surname" formControlName="surname" placeholder="Ingrese apellido">
+    </mat-form-field>
+
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-group half">
+        <mat-label>Edad</mat-label>
+        <input matInput type="number" id="age" formControlName="age" placeholder="Ingrese edad">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-group half">
+        <mat-label>Promedio</mat-label>
+        <input matInput type="number" id="average" formControlName="average" placeholder="Ingrese promedio">
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="editForm.invalid" class="submit-btn">
+      Guardar Cambios
+    </button>
+
+  </form>
+</div>

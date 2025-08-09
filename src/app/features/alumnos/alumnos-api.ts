@@ -24,4 +24,8 @@ export class AlumnosAPI {
   addAlumno(student: Student): Observable<Student> {
     return this.http.post<Student>(`${this.baseUrl}/${RoutePaths.STUDENTS}`, student).pipe(delay(1000));
   }
+
+  updateAlumno(student: Student): Observable<Student> {
+  return this.http.put<Student>(`${this.baseUrl}/${RoutePaths.STUDENTS}/${student.dni}`, student);
+  }
 }
