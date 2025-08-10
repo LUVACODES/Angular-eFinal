@@ -1,5 +1,5 @@
 export enum RoutePaths {
-    CURSOS = 'cursos',
+    CURSOS = 'courses',
     ALUMNOS = 'alumnos',
     INSCRIPCIONES = 'inscripciones',
     STUDENTS = 'students',
