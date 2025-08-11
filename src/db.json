@@ -5,35 +5,35 @@
       "professor": "María Fernández",
       "duration": 40,
       "price": 199.99,
-      "id": "3c2e"
+      "id": "1001"
     },
     {
       "title": "Desarrollo Web con React",
       "professor": "Carlos Martínez",
       "duration": 35,
       "price": 179.99,
-      "id": "b650"
+      "id": "1002"
     },
     {
       "title": "Fundamentos de Vue.js",
       "professor": "Ana López",
       "duration": 30,
       "price": 149.99,
-      "id": "cc24"
+      "id": "1003"
     },
     {
       "title": "Backend con Node.js y Express",
       "professor": "Luis García",
       "duration": 45,
       "price": 219.99,
-      "id": "67cd"
+      "id": "1004"
     },
     {
       "title": "Bases de Datos con MongoDB",
       "professor": "Sofía Ramírez",
       "duration": 25,
       "price": 129.99,
-      "id": "145b"
+      "id": "1005"
     }
   ],
   "students": [
@@ -84,6 +84,23 @@
       "surname": "Blanco",
       "age": 9,
       "average": 7
+    }
+  ],
+  "registrations": [
+    {
+      "id": "4603",
+      "DNI": "123456789",
+      "Course": [
+        1001,
+        1002
+      ]
+    },
+    {
+      "id": "88d0",
+      "DNI": "39871234",
+      "Course": [
+        1003
+      ]
     }
   ]
 }

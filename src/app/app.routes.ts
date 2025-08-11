@@ -24,7 +24,10 @@ export const routes: Routes = [
         path: RoutePaths.VIEW_STUDENTS,
         loadComponent: () => import('./features/alumnos/view-students/view-students').then (m => m.ViewStudents)
     },
- 
+    {
+        path: RoutePaths.REGISTRATION,
+        loadComponent: () => import('./features/inscripciones/inscripciones').then(m => m.Inscripciones)
+    },
     {
         path: "**", component: NotFoundComponent
     }
