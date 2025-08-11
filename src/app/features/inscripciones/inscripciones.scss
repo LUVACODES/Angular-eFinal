@@ -1,0 +1,89 @@
+.formInscrip {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #e9d7f3;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+
+  hr {
+    height: 2px;
+    background-color: rgb(101, 101, 119);
+    width: 100%;
+    border: none;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+    font-size: 1.8rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .form-group {
+    width: 100%;
+
+    mat-form-field {
+      width: 100%;
+
+      .mat-mdc-form-field-flex {
+        border-radius: 0.5rem;
+        background-color: white;
+      }
+
+      .mat-mdc-text-field-wrapper {
+        border-radius: 0.5rem;
+      }
+
+      .mat-input-element {
+        font-size: 1rem;
+        padding: 0.75rem 1rem;
+      }
+
+      .mat-form-field-infix {
+        padding: 0.75rem 0;
+      }
+
+      .mat-form-field-label {
+        color: #555;
+        font-weight: 500;
+      }
+    }
+
+    .error {
+      color: #e65454;
+      font-size: 0.85rem;
+      margin-top: 0.4rem;
+    }
+  }
+
+  .form-row {
+    display: flex;
+    gap: 1rem;
+
+    .form-group.half {
+      flex: 1;
+    }
+  }
+  .submit-button {
+    background-color: #6c63ff;
+    color: white;
+    font-size: 1rem;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #5a54e8;
+    }
+  }
+}

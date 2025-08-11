@@ -1,1 +1,55 @@
-<p>inscripciones works!</p>
+<div class="formInscrip">
+  <h2>Inscripción al Curso</h2>
+  <hr>
+
+  <form [formGroup]="form" (ngSubmit)="signUpAlumno()">
+
+    <div class="form-group">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>DNI</mat-label>
+        <input matInput type="text" formControlName="dni" />
+      </mat-form-field>
+      <div class="error" *ngIf="form.get('dni')?.invalid && form.get('dni')?.touched">
+        DNI inválido (mínimo 7 caracteres)
+      </div>
+    </div>
+
+    <button
+      mat-raised-button
+      color="primary"
+      type="button"
+      (click)="getAlumno()"
+      class="submit-btn"
+    >
+      Buscar alumno
+    </button>
+
+    <div *ngIf="student">
+      <p><strong>Alumno:</strong> {{ student.name }}</p>
+
+      <div class="form-group">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Seleccione curso</mat-label>
+          <mat-select formControlName="curso">
+            <mat-option *ngFor="let curso of cursos" [value]="curso.id">
+              {{ curso.title }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div class="error" *ngIf="form.get('curso')?.invalid && form.get('curso')?.touched">
+          Seleccione un curso
+        </div>
+      </div>
+
+      <button
+        mat-raised-button
+        color="accent"
+        type="submit"
+        [disabled]="form.invalid"
+        class="submit-btn"
+      >
+        Inscribir
+      </button>
+    </div>
+  </form>
+</div>
