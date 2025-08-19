@@ -4,6 +4,7 @@
     "": {
       "name": "entregable-01",
       "dependencies": {
+        "@angular/animations": "^20.1.6",
         "@angular/cdk": "20.1.2",
         "@angular/common": "^20.0.0",
         "@angular/compiler": "^20.0.0",
@@ -13,6 +14,7 @@
         "@angular/platform-browser": "^20.0.0",
         "@angular/router": "^20.0.0",
         "@ng-bootstrap/ng-bootstrap": "19.0.1",
+        "@ngrx/store": "^20.0.0",
         "@popperjs/core": "^2.11.8",
         "bootstrap": "^5.3.6",
         "rxjs": "~7.8.0",
@@ -69,6 +71,8 @@
     "@angular-devkit/core": ["@angular-devkit/core@20.1.1", "", { "dependencies": { "ajv": "8.17.1", "ajv-formats": "3.0.1", "jsonc-parser": "3.3.1", "picomatch": "4.0.2", "rxjs": "7.8.2", "source-map": "0.7.4" }, "peerDependencies": { "chokidar": "^4.0.0" }, "optionalPeers": ["chokidar"] }, "sha512-5rKL/WfMhZOi0MyYWXK95kPwxSd7zhZieyo3Idtg0B1VMFP4jIa4jRkV7uz55HRPOl5/kK3aIrsxgtKuxQg50Q=="],
 
     "@angular-devkit/schematics": ["@angular-devkit/schematics@20.1.1", "", { "dependencies": { "@angular-devkit/core": "20.1.1", "jsonc-parser": "3.3.1", "magic-string": "0.30.17", "ora": "8.2.0", "rxjs": "7.8.2" } }, "sha512-G87e0u3V9E2iqwoV8nBIuLNtMUAnb/A62LNq9eTJguyVEC0HSRWQnByhUvmv6mlABLa4worZJnE5vMbXW1LeQg=="],
+
+    "@angular/animations": ["@angular/animations@20.1.7", "", { "dependencies": { "tslib": "^2.3.0" }, "peerDependencies": { "@angular/common": "20.1.7", "@angular/core": "20.1.7" } }, "sha512-ykzx6cKqGkKbtE2CbHBukIgM2Wk8+BmYTEqwRZRVqskxbIGvEuLmLJrvmwpqqvo4MypgvbLEtJyviSCYQkZYvA=="],
 
     "@angular/build": ["@angular/build@20.1.1", "", { "dependencies": { "@ampproject/remapping": "2.3.0", "@angular-devkit/architect": "0.2001.1", "@babel/core": "7.27.7", "@babel/helper-annotate-as-pure": "7.27.3", "@babel/helper-split-export-declaration": "7.24.7", "@inquirer/confirm": "5.1.13", "@vitejs/plugin-basic-ssl": "2.1.0", "beasties": "0.3.4", "browserslist": "^4.23.0", "esbuild": "0.25.5", "https-proxy-agent": "7.0.6", "istanbul-lib-instrument": "6.0.3", "jsonc-parser": "3.3.1", "listr2": "8.3.3", "magic-string": "0.30.17", "mrmime": "2.0.1", "parse5-html-rewriting-stream": "7.1.0", "picomatch": "4.0.2", "piscina": "5.1.2", "rollup": "4.44.1", "sass": "1.89.2", "semver": "7.7.2", "source-map-support": "0.5.21", "tinyglobby": "0.2.14", "vite": "7.0.0", "watchpack": "2.4.4" }, "optionalDependencies": { "lmdb": "3.4.1" }, "peerDependencies": { "@angular/compiler": "^20.0.0", "@angular/compiler-cli": "^20.0.0", "@angular/core": "^20.0.0", "@angular/localize": "^20.0.0", "@angular/platform-browser": "^20.0.0", "@angular/platform-server": "^20.0.0", "@angular/service-worker": "^20.0.0", "@angular/ssr": "^20.1.1", "karma": "^6.4.0", "less": "^4.2.0", "ng-packagr": "^20.0.0", "postcss": "^8.4.0", "tailwindcss": "^2.0.0 || ^3.0.0 || ^4.0.0", "tslib": "^2.3.0", "typescript": ">=5.8 <5.9", "vitest": "^3.1.1" }, "optionalPeers": ["@angular/core", "@angular/localize", "@angular/platform-browser", "@angular/platform-server", "@angular/service-worker", "@angular/ssr", "karma", "less", "ng-packagr", "postcss", "tailwindcss", "vitest"] }, "sha512-N9tKfHatZEdy/uGX9atJQKVIejAvRbOMwpBj9Z5Y2RtR2vTDOOm0q86OYQW8baK19b2/HkHRe6PSPeiHpTG+8g=="],
 
@@ -289,6 +293,8 @@
     "@napi-rs/nice-win32-x64-msvc": ["@napi-rs/nice-win32-x64-msvc@1.0.4", "", { "os": "win32", "cpu": "x64" }, "sha512-kCNk6HcRZquhw/whwh4rHsdPyOSCQCgnVDVik+Y9cuSVTDy3frpiCJTScJqPPS872h4JgZKkr/+CwcwttNEo9Q=="],
 
     "@ng-bootstrap/ng-bootstrap": ["@ng-bootstrap/ng-bootstrap@19.0.1", "", { "dependencies": { "tslib": "^2.3.0" }, "peerDependencies": { "@angular/common": "^20.0.0", "@angular/core": "^20.0.0", "@angular/forms": "^20.0.0", "@angular/localize": "^20.0.0", "@popperjs/core": "^2.11.8", "rxjs": "^6.5.3 || ^7.4.0" } }, "sha512-1lErAkwh0F+gWkzpiddViY4GfA9LVXkwLpgBsV9Mb3IC0zo6WNkY8WxCC+LqajirBTu20DCkZSqeRzrwaVLpZw=="],
+
+    "@ngrx/store": ["@ngrx/store@20.0.0", "", { "dependencies": { "tslib": "^2.0.0" }, "peerDependencies": { "@angular/core": "^20.0.0", "rxjs": "^6.5.3 || ^7.5.0" } }, "sha512-UVj6UVayXknq1V/OXSGAVG+CdSXYg+oFM6T4aplcP2fuq/4oHtnVi93hkIYa9OU+rhAuHvfRsOsGsTtxlpj52w=="],
 
     "@npmcli/agent": ["@npmcli/agent@3.0.0", "", { "dependencies": { "agent-base": "^7.1.0", "http-proxy-agent": "^7.0.0", "https-proxy-agent": "^7.0.1", "lru-cache": "^10.0.1", "socks-proxy-agent": "^8.0.3" } }, "sha512-S79NdEgDQd/NGCay6TCoVzXSj74skRZIKJcpJjC5lOq34SZzyI6MqtiiWoiVWoVrTcGjNeC4ipbh1VIHlpfF5Q=="],
 
