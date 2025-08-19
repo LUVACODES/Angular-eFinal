@@ -1,0 +1,9 @@
+<div class="login-form">
+  <h2>Login</h2>
+  <input type="text" placeholder="Usuario" [(ngModel)]="username" />
+  <input type="password" placeholder="Contraseña" [(ngModel)]="password" />
+  <button (click)="login()" [disabled]="(loading$ | async)">
+    {{ (loading$ | async) ? 'Cargando...' : 'Ingresar' }}
+  </button>
+  <p *ngIf="(error$ | async) as error" class="error">{{ error }}</p>
+</div>
