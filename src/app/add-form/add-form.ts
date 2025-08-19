@@ -5,7 +5,6 @@ import { Student } from '../../shared/entities';
 import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { inject } from '@angular/core/primitives/di';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
@@ -26,10 +25,7 @@ export class AddForm implements OnInit {
       name: ['', Validators.required],
       surname: ['', Validators.required],
       age: ['', [Validators.required, Validators.min(0)]],
-      average: [
-        '',
-        [Validators.required, Validators.min(0), Validators.max(10)],
-      ],
+      average: ['',[Validators.required, Validators.min(0), Validators.max(10)]],
 
     })
   }
@@ -38,10 +34,10 @@ export class AddForm implements OnInit {
     const formValue = this.studentForm.value;
     const newStudent: Student = {
       ...formValue,
-      id: formValue.dni
     };
-    this.studentAdded.emit(newStudent);
+     this.studentAdded.emit(newStudent);
     this.showSuccessAdded();
+    this.onReset();
 
   }
 

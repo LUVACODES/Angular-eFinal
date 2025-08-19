@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DataApi } from './data-api';
+import { DataAPI } from './data-api';
 
 describe('DataApi', () => {
-  let service: DataApi;
+  let service: DataAPI;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(DataApi);
+    service = TestBed.inject(DataAPI);
   });
 
   it('should be created', () => {

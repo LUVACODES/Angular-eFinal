@@ -9,7 +9,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { Course } from '../../../shared/course';
-import { Registration } from '../../../shared/registration';
 
 @Component({
   selector: 'app-inscripcion',
@@ -33,7 +32,7 @@ export class Inscripciones {
 
   constructor(private fb: FormBuilder, private dataApi: DataAPI) {
     this.form = this.fb.group({
-      dni: ['', [Validators.required, Validators.minLength(7)]],
+      dni: ['', [Validators.required, Validators.minLength(2)]],
       curso: ['', Validators.required]
     });
   }
@@ -46,6 +45,9 @@ export class Inscripciones {
         this.student = students[0];
         this.dataApi.getCursos().subscribe(cursos => {
           this.cursos = cursos;
+          this.form.get('curso')?.setValue(null);
+          this.form.get('curso')?.markAsUntouched();
+          this.form.get('curso')?.updateValueAndValidity();
         });
       } else {
         this.student = null;
@@ -56,55 +58,37 @@ export class Inscripciones {
   }
 
    signUpAlumno() {
-    if (this.form.invalid || !this.student) {
-      alert('Completa el formulario correctamente');
-      return;
-    }
-    
-    const dni: string = String(this.student?.dni ?? '');
-    if (!dni) {
-      alert('DNI no válido');
-      return;
-    }
-    
-    const cursoId: number = Number(this.form.value.curso);
-
-    this.dataApi.getRegistrations().subscribe((registros: Registration[]) => {
-    
-      const registroExistente = registros.find(r => r.DNI === dni);
-
-      if (registroExistente) {
-        
-        if (!Array.isArray(registroExistente.Course)) {
-          registroExistente.Course = [];
-        }
-
-        if (registroExistente.Course.includes(cursoId)) {
-          alert('El alumno ya está inscripto en ese curso');
-          return;
-        }
-
-        registroExistente.Course.push(cursoId);
-
-        if (registroExistente.id === undefined) {
-          alert('Error: registro existente sin id');
-          return;
-        }
-
-        this.dataApi.updateRegistration(registroExistente.id, registroExistente).subscribe(() => {
-          alert(`Alumno ${this.student!.name} inscripto en curso con ID ${cursoId}`);
-        });
-
-      } else {
-        const nuevoRegistro: Registration = {
-          DNI: dni,
-          Course: [cursoId]
-        };
-
-        this.dataApi.createRegistration(nuevoRegistro).subscribe(() => {
-          alert(`Alumno ${this.student!.name} inscripto en curso con ID ${cursoId}`);
-        });
-      }
-    });
+  if (this.form.invalid || !this.student) {
+    alert('Completa el formulario correctamente');
+    return;
   }
+
+  const dni: string = String(this.student?.dni ?? '');
+  if (!dni) {
+    alert('DNI no válido');
+    return;
+  }
+
+  const cursoId: number = Number(this.form.value.curso);
+
+  this.dataApi.getStudentById(this.student.id!).subscribe(studentData => {
+    
+    if (!Array.isArray(studentData.registrations)) {
+      studentData.registrations = [];
+    }
+
+    if (studentData.registrations.includes(cursoId)) {
+      alert('El alumno ya está inscripto en ese curso');
+      return;
+    }
+
+    studentData.registrations.push(cursoId);
+
+    this.dataApi.updateStudent(studentData).subscribe(() => {
+      alert(`Alumno ${studentData.name} inscripto en curso con ID ${cursoId}`);
+      this.form.get('curso')?.reset(); 
+    });
+
+  });
+}
 }

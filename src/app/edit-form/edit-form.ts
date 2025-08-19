@@ -46,7 +46,7 @@ export class EditForm implements OnInit, OnChanges {
       const formValue = this.editForm.getRawValue(); 
       const updatedStudent: Student = {
         ...formValue,
-        id: formValue.dni 
+        id: this.student.id 
       };
       this.studentEdited.emit(updatedStudent);
     }

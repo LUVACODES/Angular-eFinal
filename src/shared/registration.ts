@@ -1,5 +1,5 @@
 export interface Registration {
-  id?: number;
+  id?: string;
   DNI: string;
   Course: number[];
 }

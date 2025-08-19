@@ -4,4 +4,6 @@ export interface Student {
     age: number;
     dni: number;
     average: number;
+    id: string;
+    registrations?: number[];
 }
