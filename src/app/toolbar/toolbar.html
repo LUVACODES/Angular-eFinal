@@ -1,3 +1,11 @@
-<h1 appBigTitle class="toolbar">
+<div class="toolbar">
+    <h1 appBigTitle >
     Listado de Estudiantes
-</h1>
+    </h1>
+
+    <div class="toolbar-user" *ngIf="user$ | async as user">
+    <span class="username">Usuario conectado : {{ user.username }}</span>
+    <button (click)="logout()" class="logout-btn">Logout</button>
+    </div>
+
+</div>
