@@ -11,6 +11,10 @@ import { Store } from '@ngrx/store';
 import { selectUser } from './ngrx/usuario/usuario.selectors';
 import { Observable } from 'rxjs';
 import { Login } from './features/login/login';
+import { environment } from '../environment.prod';
+import { ApiEndpoints } from '../shared/api-endpoints';
+
+
 
 @Component({
   selector: 'app-root',
@@ -20,6 +24,7 @@ import { Login } from './features/login/login';
   styleUrl: './app.scss'
 })
 export class App implements OnInit {
+  private ApiUrl = environment.apiUrl;
   students: Student[] = [];
   activeSection = "students";
   user$: Observable<User | null>;
@@ -33,7 +38,7 @@ export class App implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get<Student[]>('mocks/students.json').subscribe(data => {
+    this.http.get<Student[]>(`${this.ApiUrl}/${ApiEndpoints.STUDENTS}`).subscribe(data => {
       this.students = data;
     });
   }
