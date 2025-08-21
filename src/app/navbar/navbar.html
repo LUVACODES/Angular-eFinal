@@ -3,7 +3,7 @@
         <h2 appBigTitle>Acciones</h2>
         <hr>
             <ul class="list-unstyled font-monospace shadow">
-                <li>
+                <li *ngIf="(user$ | async)?.role === 'admin'">
                     <a [routerLink]="[routePaths.ALUMNOS]">Alumnos</a>
                 </li>
                 <li >
