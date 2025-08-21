@@ -1,14 +1,11 @@
-import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { UserState } from "./usuario.model";
-
-
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { UserState } from './usuario.model';
 
 export const selectUserState = createFeatureSelector<UserState>('user');
 
 export const selectUser = createSelector(
-    selectUserState,
-    (state) => state.user
-
+  selectUserState,
+  (state) => state.user
 );
 
 export const selectUserRole = createSelector(
@@ -17,11 +14,11 @@ export const selectUserRole = createSelector(
 );
 
 export const selectUserLoading = createSelector(
-    selectUserState,
-    (state) => state.loading
+  selectUserState,
+  (state) => state.loading
 );
 
 export const selectUserError = createSelector(
-    selectUserState,
-    (state) => state.error
+  selectUserState,
+  (state) => state.error
 );
