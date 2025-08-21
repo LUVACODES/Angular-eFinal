@@ -17,6 +17,7 @@
         "@ngrx/store": "^20.0.0",
         "@popperjs/core": "^2.11.8",
         "bootstrap": "^5.3.6",
+        "config": "4.1.1",
         "rxjs": "~7.8.0",
         "tslib": "^2.3.0",
         "zone.js": "~0.15.0",
@@ -503,6 +504,8 @@
     "colorette": ["colorette@2.0.20", "", {}, "sha512-IfEDxwoWIjkeXL1eXcDiow4UbKjhLdq6/EuSVR9GMN7KVH3r9gQ83e73hsz1Nd1T3ijd5xv1wcWRYO+D6kCI2w=="],
 
     "concat-map": ["concat-map@0.0.1", "", {}, "sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg=="],
+
+    "config": ["config@4.1.1", "", { "dependencies": { "json5": "^2.2.3" } }, "sha512-jljfwqNZ7QHwAW9Z9NDZdJARFiu5pjLqQO0K4ooY22iY/bIY78n0afI4ANEawfgQOxri0K/3oTayX8XIauWcLA=="],
 
     "connect": ["connect@3.7.0", "", { "dependencies": { "debug": "2.6.9", "finalhandler": "1.1.2", "parseurl": "~1.3.3", "utils-merge": "1.0.1" } }, "sha512-ZqRXc+tZukToSNmh5C2iWMSoV3X1YUcPbqEM4DkEG5tNQXrQUZCNVGGv3IuicnkMtPfGf3Xtp8WCXs295iQ1pQ=="],
 
