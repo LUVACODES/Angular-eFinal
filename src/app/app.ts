@@ -5,26 +5,39 @@ import { Navbar } from './navbar/navbar';
 import { HttpClient } from '@angular/common/http';
 import { Student } from '../shared/entities';
 import { CommonModule } from '@angular/common';
-
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { User } from './ngrx/usuario/entities';
+import { Store } from '@ngrx/store';
+import { selectUser } from './ngrx/usuario/usuario.selectors';
+import { Observable } from 'rxjs';
+import { Login } from './features/login/login';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Toolbar, Navbar, CommonModule, MatSnackBarModule],
+  standalone: true,
+  imports: [RouterOutlet, Toolbar, Navbar, CommonModule, MatSnackBarModule, Login],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App implements OnInit {
   students: Student[] = [];
   activeSection = "students";
+  user$: Observable<User | null>;
 
-  constructor(private http: HttpClient, private _snackBar: MatSnackBar) {}
+  constructor(
+    private http: HttpClient,
+    private _snackBar: MatSnackBar,
+    private store: Store
+  ) {
+    this.user$ = this.store.select(selectUser);
+  }
 
   ngOnInit(): void {
     this.http.get<Student[]>('mocks/students.json').subscribe(data => {
       this.students = data;
     });
   }
+
 
   addStudent(student: Student){
     this.students = [...this.students, student];

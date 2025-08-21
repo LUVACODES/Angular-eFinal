@@ -32,6 +32,7 @@ html {
 
 html, body { height: 100%; }
 body { 
+  min-height:100vh;
   margin: 0; 
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: rgb(59, 59, 59);

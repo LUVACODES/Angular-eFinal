@@ -1,10 +1,16 @@
 <div class="container">
-<app-toolbar class="toolbar"></app-toolbar>
-<app-navbar class="navbar"></app-navbar>
-  <div class="content">
+  <ng-container *ngIf="user$ | async as user; else showLogin">
 
-    <router-outlet> </router-outlet>
+      <app-toolbar class="toolbar"></app-toolbar>
+      <app-navbar class="navbar"></app-navbar>
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
 
-  </div>
-  
+  </ng-container>
+
+    <ng-template #showLogin>
+      <app-login></app-login>
+    </ng-template>
+
 </div>
