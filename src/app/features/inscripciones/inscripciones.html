@@ -2,7 +2,7 @@
   <h2>Inscripción al Curso</h2>
   <hr>
 
-  <form [formGroup]="form" (ngSubmit)="signUpAlumno()">
+  <form [formGroup]="form" >
 
     <div class="form-group">
       <mat-form-field appearance="outline" class="full-width">
@@ -10,11 +10,12 @@
         <input matInput type="text" formControlName="dni" />
       </mat-form-field>
       <div class="error" *ngIf="form.get('dni')?.invalid && form.get('dni')?.touched">
-        DNI inválido (mínimo 7 caracteres)
+        DNI inválido (mínimo 1 carácter)
       </div>
     </div>
 
     <button
+      *ngIf="form.get('dni')?.valid"
       mat-raised-button
       color="primary"
       type="button"
@@ -24,32 +25,40 @@
       Buscar alumno
     </button>
 
-    <div *ngIf="student">
-      <p><strong>Alumno:</strong> {{ student.name }}</p>
+    <ng-container *ngIf="student$ | async as student; else noAlumno">
+      <div *ngIf="student">
+        <p><strong>Alumno:</strong> {{ student.name }}</p>
 
-      <div class="form-group">
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Seleccione curso</mat-label>
-          <mat-select formControlName="curso">
-            <mat-option *ngFor="let curso of cursos" [value]="curso.id">
-              {{ curso.title }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <div class="error" *ngIf="form.get('curso')?.invalid && form.get('curso')?.touched">
-          Seleccione un curso
+        <div class="form-group">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Seleccione curso</mat-label>
+            <mat-select formControlName="curso">
+              <mat-option *ngFor="let curso of cursos" [value]="curso.id">
+                {{ curso.title }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="error" *ngIf="form.get('curso')?.invalid && form.get('curso')?.touched">
+            Seleccione un curso
+          </div>
         </div>
-      </div>
 
-      <button
-        mat-raised-button
-        color="accent"
-        type="submit"
-        [disabled]="form.invalid"
-        class="submit-btn"
-      >
-        Inscribir
-      </button>
-    </div>
+        <button
+          mat-raised-button
+          color="accent"
+          type="button"
+          [disabled]="form.invalid"
+          class="submit-btn"
+          (click)="signUpAlumno(student)"
+        >
+          Inscribir
+        </button>
+      </div>
+    </ng-container>
+    <ng-template #noAlumno>
+      <div *ngIf="busquedaRealizada">
+        <div class="error" style="margin-top: 10px;">Alumno no encontrado</div>
+      </div>
+    </ng-template>
   </form>
 </div>
