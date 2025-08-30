@@ -1,20 +1,22 @@
 <div class="login-form">
-  <form (ngSubmit)="login()" #loginForm="ngForm">
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
     <h2>Login</h2>
+
 
     <mat-form-field appearance="fill" class="form-group">
       <mat-label>Usuario</mat-label>
-      <input matInput type="text" name="username" [(ngModel)]="username" required #usernameInput="ngModel" />
-      <div *ngIf="usernameInput.invalid && usernameInput.touched" class="error">
-        Usuario requerido
+      <input matInput type="text" formControlName="username" />
+      <div *ngIf="loginForm.get('username')?.touched && loginForm.get('username')?.errors?.['minlength']" class="error">
+        Mínimo 4 caracteres
       </div>
     </mat-form-field>
 
+
     <mat-form-field appearance="fill" class="form-group">
       <mat-label>Contraseña</mat-label>
-      <input matInput type="password" name="password" [(ngModel)]="password" required #passwordInput="ngModel" />
-      <div *ngIf="passwordInput.invalid && passwordInput.touched" class="error">
-        Contraseña requerida
+      <input matInput type="password" formControlName="password" />
+      <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['minlength']" class="error">
+        Mínimo 4 caracteres
       </div>
     </mat-form-field>
 
@@ -22,7 +24,7 @@
       *ngIf="canSubmit() && !(loading$ | async)">
       Ingresar
     </button>
-    <span *ngIf="loading$ | async">Cargando...</span>
-    <p *ngIf="(error$ | async) as error" class="error">{{ error }}</p>
+  <span *ngIf="loading$ | async">Cargando...</span>
+  <p *ngIf="(error$ | async) as error" class="error">{{ error }}</p>
   </form>
 </div>
