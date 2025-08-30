@@ -44,10 +44,10 @@
         </div>
 
         <button
+          *ngIf="form.valid"
           mat-raised-button
           color="accent"
           type="button"
-          [disabled]="form.invalid"
           class="submit-btn"
           (click)="signUpAlumno(student)"
         >
