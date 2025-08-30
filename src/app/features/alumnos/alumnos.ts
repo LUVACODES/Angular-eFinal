@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { AlumnosAPI } from './alumnos-api';
 import { Student } from '../../../shared/entities';
 import { CommonModule } from '@angular/common';
@@ -13,16 +15,25 @@ import { EditForm } from '../../edit-form/edit-form';
   templateUrl: './alumnos.html',
   styleUrl: './alumnos.scss'
 })
-export class Alumnos {
+export class Alumnos implements OnDestroy {
   activeView: 'list' | 'add' | 'edit' = 'list';
   alumnos!: Student[];
   editStudentData?: Student;
   constructor(private alumnosAPI: AlumnosAPI) {}
 
+  private destroy$ = new Subject<void>();
+
   ngOnInit() {
-    this.alumnosAPI.getAlumnos().subscribe(alumnos => {
-      this.alumnos = alumnos;
-    });
+    this.alumnosAPI.getAlumnos()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(alumnos => {
+        this.alumnos = alumnos;
+      });
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   deleteStudent( student: Student) {

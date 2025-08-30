@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { CursosAPI } from './cursos-api';
 import { CommonModule } from '@angular/common';
 import { Course } from '../../../shared/course';
@@ -10,14 +12,23 @@ import { MatTableModule } from '@angular/material/table';
   templateUrl: './cursos.html',
   styleUrl: './cursos.scss'
 })
-export class Cursos implements OnInit {
+export class Cursos implements OnInit, OnDestroy {
   cursos!: Course[];
   displayedColumns: string[] = ['title', 'professor', 'duration', 'price'];
   constructor(private cursosService: CursosAPI) {}
 
+  private destroy$ = new Subject<void>();
+
   ngOnInit() {
-    this.cursosService.getCursos().subscribe(data => {
-      this.cursos = data; 
-    });
+    this.cursosService.getCursos()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(data => {
+        this.cursos = data;
+      });
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }
